@@ -36,14 +36,14 @@ int Plane::getYAxis() {
     return y_axis;
 }
 
-void Plane::displayPlane() {
+void Plane::displayPlane(vector<Particle> particles_in_plane) {
     string printable_x_axis;
     // Creates an x-axis of spaces
     for (int i = 0; i < x_axis; ++i) {
         printable_x_axis += "  ";
     }
 
-    // Prints the pane 
+    // Prints the plane 
     for (int i = 0; i < y_axis; ++i) {
         cout << "[" << printable_x_axis << "]" << endl;
     }
