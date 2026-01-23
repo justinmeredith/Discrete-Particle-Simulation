@@ -1,6 +1,9 @@
 #include <vector>
+#include <string>
+#include "Particle.cpp"
 
 using std::vector;
+using std::string;
 
 class Plane {
     public:
@@ -10,8 +13,10 @@ class Plane {
         void setYAxis(int new_y_axis);
         int getXAxis();
         int getYAxis();
-        void displayPlane(vector<Particle> particles_in_plane);
+        void setParticleGrid(vector<Particle> particles_in_plane);
+        void displayPlane();
     private:
         int x_axis;
         int y_axis;
+        vector<vector<string>> particle_grid;
 };
