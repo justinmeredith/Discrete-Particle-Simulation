@@ -38,7 +38,6 @@ void Plane::setParticleGrid(vector<Particle> particles_in_plane) {
     // Sizes the grid and fill each space with two empty spaces
     particle_grid.clear();
     particle_grid.resize(y_axis, vector<string>(x_axis, "  "));
-    cout << "Inserting empty spaces works" << endl;
 
     // Inserts a "o" string in the particle grid for every particle that currently exists
     for (int i = 0; i < particles_in_plane.size(); ++i) {
