@@ -39,7 +39,7 @@ void Plane::setParticleGrid(vector<Particle> particles_in_plane) {
     particle_grid.clear();
     particle_grid.resize(y_axis, vector<string>(x_axis, "  "));
 
-    // Inserts a "o" string in the particle grid for every particle that currently exists
+    // Inserts an "o" string in the particle grid for every particle that currently exists
     for (int i = 0; i < particles_in_plane.size(); ++i) {
         Particle current_particle = particles_in_plane.at(i);
         particle_grid.at(current_particle.getYPosition()).at(current_particle.getXPosition()) = "o ";
