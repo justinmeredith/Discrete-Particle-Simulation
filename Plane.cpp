@@ -35,7 +35,7 @@ int Plane::getYAxis() {
 }
 
 void Plane::setParticleGrid(vector<Particle> particles_in_plane) {
-    // Sizes the grid and fill each space with two empty spaces
+    // Sizes the grid and fills each space with two empty spaces
     particle_grid.clear();
     particle_grid.resize(y_axis, vector<string>(x_axis, "  "));
 
