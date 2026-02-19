@@ -53,15 +53,31 @@ int main() {
         } else if (user_input == "1") {
             // Runs the simulation
             cout << "Option 1 selected; not currently functional" << endl;
+            testing_plane.setParticleGrid(all_particles);
+            testing_plane.displayPlane();
         } else if (user_input == "2") {
             // Adds a particle
-            cout << "Option 2 selected; not currently functional" << endl;
-            cout << "To create a particle, enter its x-position, y-position, and initial velocity separated by commas." << endl;
-            cout << "Each value should be an integer. Example input: 2, 3, 5. In this example, the x-position is 2," << endl;
-            cout << "the y-position is 3, and the velocity is 5." << endl << endl;
-            cout << " -> Your Selection: ";
-            cin >> user_input;
-            // Need to split user_input into tokens and create a particle from it
+            int x_initial;
+            int y_initial;
+            int x_velocity_initial;
+            int y_velocity_initial;
+
+            cout << "To create a particle, enter its x-position, y-position, and initial x- and y-velocity." << endl;
+            cout << "Each value should be an integer. Example input: 2, 3, 5." << endl << endl;
+            
+            // Needs input validation
+            cout << " -> x-position: ";
+            cin >> x_initial;
+            cout << " -> y-position: ";
+            cin >> y_initial;
+            cout << " -> initial x-velocity: ";
+            cin >> x_velocity_initial;
+            cout << " -> initial y-velocity: ";
+            cin >> y_velocity_initial;
+
+            Velocity velocity_initial(x_velocity_initial, y_velocity_initial);
+
+            all_particles.push_back(Particle(x_initial, y_initial, velocity_initial));
         } else if (user_input == "3") {
             // Removes a particle
             cout << "Option 3 selected; not currently functional" << endl;
