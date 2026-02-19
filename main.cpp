@@ -4,27 +4,27 @@ using std::cin;
 void clearCin() {
     cin.ignore();
     cin.clear();
-};
+}
+
+void updateParticlePositions(int time_step, vector<Particle>& particles) {
+    for (int i = 0; i < particles.size(); ++i) {
+        particles.at(i).updatePosition(time_step);
+    }
+}
+
+void runParticleSimulation(int time_step, vector<Particle>& all_particles, Plane& testing_plane) {
+    cout << endl << endl;
+    testing_plane.setParticleGrid(all_particles);
+    testing_plane.displayPlane();
+    updateParticlePositions(time_step, all_particles);
+}
 
 string menu_line = "~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~\n";
 
 int main() {
     Plane testing_plane;
-    Particle testing_particle(10, 3, Velocity(-2, 3));
     vector<Particle> all_particles;
     string user_input;
-
-    // Code for testing, will be removed shortly
-    // // Starting state
-    // all_particles.push_back(testing_particle);
-    // testing_plane.setParticleGrid(all_particles);
-    // testing_plane.displayPlane();
-
-    // // Second state
-    // all_particles.at(0).updatePosition(2);
-    // testing_plane.setParticleGrid(all_particles);
-    // testing_plane.displayPlane();
-
 
     // Header
     cout << endl << "_______| Discrete Particle Simulation |_______" << endl << endl;
@@ -52,9 +52,31 @@ int main() {
             return 0;
         } else if (user_input == "1") {
             // Runs the simulation
-            cout << "Option 1 selected; not currently functional" << endl;
-            testing_plane.setParticleGrid(all_particles);
-            testing_plane.displayPlane();
+            int time_step;
+            int updates;
+
+            // Possible input design:
+            // Get input to determine how many time steps to take between plane displays (i.e., the X that we're feeding to 
+            // to the Plane.updatePlane(X) function)
+            // Loop that keeps checking for user input
+                // If user enters a number Y, display the plane Y times, updating between each display
+                // If the user doesn't enter anything, display and update the plane 1 times
+                // If the user enters a "quit" character like Q or maybe just any other input besides a valid number,
+                // stop displaying updates and return to the main menu
+            clearCin();
+            cout << "How many time steps would you like to pass between updates?" << endl;
+            cout << " -> Time Steps: ";
+            cin >> time_step;
+            clearCin();
+            cout << "How many updates would you like to simulate?" << endl;
+            cout << " -> Updates: ";
+            cin >> updates;
+
+            for (int i = 0; i < updates; ++i) {
+                runParticleSimulation(time_step, all_particles, testing_plane);
+            }
+
+
         } else if (user_input == "2") {
             // Adds a particle
             int x_initial;
@@ -64,7 +86,7 @@ int main() {
 
             cout << "To create a particle, enter its x-position, y-position, and initial x- and y-velocity." << endl;
             cout << "Each value should be an integer. Example input: 2, 3, 5." << endl << endl;
-            
+
             // Needs input validation
             cout << " -> x-position: ";
             cin >> x_initial;
