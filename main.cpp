@@ -2,8 +2,8 @@
 using std::cin;
 
 void clearCin() {
-    cin.ignore();
     cin.clear();
+    cin.sync();
 }
 
 void updateParticlePositions(int time_step, vector<Particle>& particles) {
